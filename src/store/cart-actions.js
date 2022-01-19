@@ -1,11 +1,12 @@
 import { uiActions } from './ui-slice';
 import { cartActions } from './cart-slice';
 
+// #261 getting started with fetching data
 export const fetchCartData = () => {
   return async (dispatch) => {
     const fetchData = async () => {
       const response = await fetch(
-        'https://cartitem-ch19-default-rtdb.firebaseio.com/cart.json'
+        'https://redux-ch19-default-rtdb.firebaseio.com/'
       );
 
       if (!response.ok) {
@@ -36,6 +37,7 @@ export const fetchCartData = () => {
   };
 };
 
+// #260 using an action creator thunk
 export const sendCartData = (cart) => {
   return async (dispatch) => {
     dispatch(
@@ -47,7 +49,7 @@ export const sendCartData = (cart) => {
     );
     const sendRequest = async () => {
       const response = await fetch(
-        'https://cartitem-ch19-default-rtdb.firebaseio.com/cart.json',
+        'https://redux-ch19-default-rtdb.firebaseio.com/',
         {
           method: 'PUT',
           body: JSON.stringify({
